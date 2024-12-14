@@ -5,7 +5,6 @@ import logo from '../assist/logo (1).svg'; // Replace with your logo path
 import KeyboardVoiceIcon from '@mui/icons-material/KeyboardVoice';
 import MenuIcon from '@mui/icons-material/Menu';
 import Cartlist from './Cartlist';
-
 const Navbar = () => {
   const [open, setOpen] = React.useState(false);
 
