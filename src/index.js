@@ -5,7 +5,7 @@ import App from './App';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Layout from './components/layout/Layout';
 import SignUp from './components/auth/sign-up/SignUp';
-import SignIn from './components/auth/sign-in/SignIn';
+import SignIn from './components/auth/sign-in/Sign In';
 import Error from './components/error/Error';
 import MyAccount from './components/My account/MyAccount';
 import UpdateProfile from './components/My account/update-profile/UpdateProfile';
@@ -21,15 +21,15 @@ const router = createBrowserRouter([
           element: <App />,
         },
         {
-          path: "sign-up",
+          path: "/sign-up",
           element: <SignUp />,
         },
         {
-            path: "sign-in",
+            path: "/sign-in",
             element: <SignIn />,
           },
           {
-            path: "account",
+            path: "/account",
             element: <ProtectedRoute> <MyAccount /></ProtectedRoute>,
           },
           {

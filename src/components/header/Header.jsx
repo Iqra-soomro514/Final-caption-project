@@ -239,7 +239,7 @@ const Header = () => {
                       paddingY: 1,
                     }}
                   >
-                    <Link to={"sign-in "} className="text-decoration-none text">Log in</Link>
+                    <Link to='/sign-in' className="text-decoration-none text">Log in</Link>
                   </Button>
                   <Button
                     className="w-28 h-10"
