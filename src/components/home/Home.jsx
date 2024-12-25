@@ -7,6 +7,8 @@ import { Box } from '@mui/material'
 import BestSellers from './best-sellers/BestSellers'
 import SmartWatches from '../home/SmartWatches/SmartWatches'
 import MobilesLatest from './Mobile-lastest/MobileLatest'
+import BrandsIcon from './BrandsIcon'
+import Footer from '../footer/Footer'
 
 const Home = () => {
   return (
@@ -21,6 +23,8 @@ const Home = () => {
     </Box>
     <SmartWatches />
     <MobilesLatest/>
+    <BrandsIcon/>
+    <Footer/>
         
    </>
    
