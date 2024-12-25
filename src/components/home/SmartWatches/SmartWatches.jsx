@@ -144,7 +144,7 @@ const SmartWatches = () => {
       >
         <Box className="container mx-auto pt-7 mb:pt-16 pb-7 flex justify-between items-center px-3">
           <Typography className="text-white"variant="h5">
-          Latest Mobiles
+          Latest Smart Watches
           </Typography>
           <Button
             className="!text-black !bg-white !hover:text-slate-300 !capitalize"
