@@ -9,6 +9,7 @@ import SmartWatches from '../home/SmartWatches/SmartWatches'
 import MobilesLatest from './Mobile-lastest/MobileLatest'
 import BrandsIcon from './BrandsIcon'
 import Footer from '../footer/Footer'
+import ShopPrice from '../Shopprice/shopprice'
 
 const Home = () => {
   return (
@@ -19,12 +20,15 @@ const Home = () => {
       <EarbudGallery/>
       <ProductWithMedia/>
       <BestSellers/>
+     
 
     </Box>
     <SmartWatches />
     <MobilesLatest/>
+    <ShopPrice/>
     <BrandsIcon/>
     <Footer/>
+   
         
    </>
    
