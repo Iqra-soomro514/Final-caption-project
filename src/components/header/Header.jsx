@@ -18,7 +18,7 @@ import {
   faEnvelope,
 } from "@fortawesome/free-regular-svg-icons";
 import { Button, Divider, Menu, Paper, Typography } from "@mui/material";
-import AppMenu from './AppMenu'
+import AppMenu from "./AppMenu";
 import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
@@ -29,17 +29,21 @@ const Header = () => {
   const [userName, setUserName] = useState("");
   const navigate = useNavigate();
 
+  const userData = localStorage?.getItem("user");
+  const storedUser = JSON.parse(userData);
+
   useEffect(() => {
-    const userData = localStorage.getItem("user");
-    const storedUser = userData ? JSON.parse(userData) : null;
-  
-    setIsLoggedIn(!!storedUser);
-  
+
+
+    if (storedUser) {
+
+      setIsLoggedIn(true)
+
+    }
     if (storedUser && storedUser.fullName) {
       setUserName(storedUser.fullName);
     }
   }, []);
-
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
   };
@@ -84,7 +88,11 @@ const Header = () => {
     >
       <MenuItem><Link to={'account'}>My account</Link></MenuItem>
       <Divider />
-      <MenuItem className="text-xs !important">Track my order</MenuItem>
+      <MenuItem>
+  <Link to="TrackMyOrder" className="text-xs !important">
+    Track My Order
+  </Link>
+</MenuItem>
       <Divider />
       <MenuItem className="text-xs">Launch a complaint</MenuItem>
       <Divider />
@@ -203,7 +211,44 @@ const Header = () => {
               sx={{ display: { xs: "none", md: "flex" } }}
               className="flex items-center"
             >
-              {isLoggedIn ? (
+              {!isLoggedIn ? (<Box className="flex gap-2">
+                <Button
+                  className="w-28 h-10"
+                  variant="contained"
+                  sx={{
+                    textTransform: "none",
+                    backgroundColor: "white",
+                    color: "#48afff",
+                    border: "1px solid #48afff",
+                    "&:hover": {
+                      backgroundColor: "transparent",
+                      color: "white",
+                      border: "1px solid white",
+                    },
+                    paddingX: 2,
+                    paddingY: 1,
+                  }}
+                >
+                  <Link to={"sign-in"}>Log in</Link>
+                </Button>
+                <Button
+                  className="w-28 h-10"
+                  variant="outlined"
+                  sx={{
+                    textTransform: "none",
+                    backgroundColor: "transparent",
+                    color: "white",
+                    border: "1px solid white",
+                    "&:hover": { backgroundColor: "white", color: "#48afff" },
+                    paddingX: 2,
+                    paddingY: 1,
+                  }}
+                >
+                  <Link to={"sign-up"}>Register</Link>
+                </Button>
+              </Box>
+
+              ) : (isLoggedIn && (
                 <Box className='flex items-center gap-2'>
                   <IconButton
                     size="large"
@@ -219,56 +264,7 @@ const Header = () => {
 
                   {userName && <Typography className="w-20">{userName}</Typography>}
 
-                </Box>
-              ) : (
-                <Box className="flex gap-2">
-                  <Button
-                    className="w-28 h-10"
-                    variant="contained"
-                    sx={{
-                      textTransform: "none",
-                      backgroundColor: "white",
-                      color: "#48afff",
-                      border: "1px solid #48afff",
-                      "&:hover": {
-                        backgroundColor: "transparent",
-                        color: "white",
-                        border: "1px solid white",
-                      },
-                      paddingX: 2,
-                      paddingY: 1,
-                    }}
-                  >
-                    <Link to='/sign-in' className="text-decoration-none text">Log in</Link>
-                  </Button>
-                  <Button
-                    className="w-28 h-10"
-                    variant="outlined"
-                    sx={{
-                      textTransform: "none",
-                      backgroundColor: "transparent",
-                      color: "white",
-                      border: "1px solid white",
-                      "&:hover": { backgroundColor: "#48afff", color: "white" },
-                     
-                    }}
-                  >
-                    <Link to={"sign-up"} className="text-decoration-none text-white">Register</Link>
-                  </Button>
-                </Box>
-              )}
-            </Box>
-            <Box sx={{ display: { xs: "flex", md: "none" } }}>
-              <IconButton
-                size="large"
-                aria-label="show more"
-                aria-controls={mobileMenuId}
-                aria-haspopup="true"
-                onClick={handleMobileMenuOpen}
-                color="inherit"
-              >
-                <FontAwesomeIcon icon={faEllipsisVertical} />
-              </IconButton>
+                </Box>))}
             </Box>
           </Toolbar>
         </AppBar>

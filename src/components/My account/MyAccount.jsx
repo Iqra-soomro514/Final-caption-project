@@ -2,8 +2,10 @@ import { faCircleUser, faGear } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Box, IconButton, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import AccountManagement from "./account-management/AccountManagement";
+import AccountManagement from "./account-manage/AccountManage";
 import { Outlet } from "react-router-dom";
+import { AccountBalance } from "@mui/icons-material";
+import AccountManage from "./account-manage/AccountManage";
 
 const MyAccount = () => {
   const [userName, setUserName] = useState("");
@@ -60,9 +62,10 @@ const MyAccount = () => {
         </Box>
       </Box>
 
-      <AccountManagement />
+      <AccountManage />
     </Box>
   );
 };
 
 export default MyAccount;
+

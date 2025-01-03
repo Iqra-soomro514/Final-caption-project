@@ -1,37 +1,47 @@
 import React from 'react'
-import CategoryBar from './category-bar/CategoryBar'
+import Category from './category/Category'
 import HeroSection from './hero-section/HeroSection'
-import EarbudGallery from './earbud-gallery/EarbudGallery'
-import ProductWithMedia from './product-with-media/ProductWithMedia'
+import Gallery from './earbud-gallery/EarbudGallery'
+import Products from './products/Products'
 import { Box } from '@mui/material'
 import BestSellers from './best-sellers/BestSellers'
-import SmartWatches from '../home/SmartWatches/SmartWatches'
-import MobilesLatest from './Mobile-lastest/MobileLatest'
-import BrandsIcon from './BrandsIcon'
+// import Header from '../header/Header'
+import SmartWatches from './smart-watches/SmartsWatche'
+import MobileSection from './mobile-secion/MobilesSection'
+import PriceSection from './price-section/PricesSection'
+import CustomCard from './custom-card/CustomCard'
+import TrimmersShaver from "./trimmer-shaver/TrimmersShaver"
+import SubSection from './sub-section/SubsSection'
 import Footer from '../footer/Footer'
-import ShopPrice from '../Shopprice/shopprice'
+import SmartWatche from './smart-watches/SmartsWatche'
+import MobilesSection from './mobile-secion/MobilesSection'
+import TrimmerShaver from './trimmer-shaver/TrimmersShaver'
+import SubsSection from './sub-section/SubsSection'
+import PricesSection from './price-section/PricesSection'
+
+
 
 const Home = () => {
   return (
-   <>
+    <>
+      {/* <Header/> */}
     <Box className="!bg-slate-100">
-      <CategoryBar/>
+    
+      <Category/>
       <HeroSection/>
-      <EarbudGallery/>
-      <ProductWithMedia/>
+      <Gallery/>
+      <Products/>
       <BestSellers/>
-     
-
-    </Box>
-    <SmartWatches />
-    <MobilesLatest/>
-    <ShopPrice/>
-    <BrandsIcon/>
-    <Footer/>
+      <SmartWatche />
+      < MobilesSection/>
+      <PricesSection />
+      <CustomCard />
+      <TrimmerShaver />
+      <SubsSection />
+      <Footer />
+    </Box> 
    
-        
-   </>
-   
+    </>
   )
 }
 

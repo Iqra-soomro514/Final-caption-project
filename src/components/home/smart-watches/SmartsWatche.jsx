@@ -5,25 +5,24 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/grid";
 import "swiper/css/navigation";
-import "./swiper.css";
 import { Grid } from "swiper/modules";
 import { Navigation } from "swiper/modules";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import earbudData from "../../../data/earbudData";
+import watchData from "./ProductData";
 
-const EarbudGallery = () => {
+const SmartsWatches = () => {
   const navigate = useNavigate();
 
   const handleProductClick = (id) => {
-    navigate(`/earbud/${id}`); // Update the route to match the new route in index.js
+    navigate(`/watch/${id}`);
   };
 
   return (
     <>
       <Box
         sx={{
-          backgroundImage: `url('https://static.priceoye.pk/images/categories/section-earbuds-bg-md.png')`,
+          backgroundImage: `url('https://static.priceoye.pk/images/categories/section-watches-bg-md.png')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
@@ -31,7 +30,7 @@ const EarbudGallery = () => {
         className="w-[100%] h-[300px] lg:h-[450px] mb-52"
       >
         <Box className="container mx-auto pt-7 mb:pt-16 pb-7 flex justify-between items-center px-3">
-          <Typography className="text-white">Latest Wireless Earbuds</Typography>
+          <Typography className="text-white">Latest Smart Watches</Typography>
           <Button className="!text-black !bg-white !hover:text-slate-300 !capitalize" variant="contained">
             View all
           </Button>
@@ -49,7 +48,7 @@ const EarbudGallery = () => {
           modules={[Grid, Navigation]}
           className="customSwiper container mx-auto"
         >
-          {earbudData.map((item) => (
+          {watchData.map((item) => (
             <SwiperSlide
               key={item.id}
               className="bg-white rounded-lg mx-3 !w-72 !px-5 cursor-pointer drop-shadow-md"
@@ -88,4 +87,4 @@ const EarbudGallery = () => {
   );
 };
 
-export default EarbudGallery;
+export default SmartsWatches;

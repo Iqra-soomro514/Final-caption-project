@@ -13,7 +13,7 @@ import Img8 from "../../../assets/hero-8.jpg"
 import Banner from "../../../assets/sale-campaign-banner.gif"
 
 
-import { Autoplay}  from 'swiper/modules';
+import { Navigation}  from 'swiper/modules';
 import { Box } from '@mui/material';
 
 const HeroSection = () => {
@@ -59,8 +59,8 @@ const HeroSection = () => {
         slidesPerView={1}
         spaceBetween={0}
         loop={true}
-        Autoplay={true}
-        modules={[Autoplay]}
+        navigation={true}
+        modules={[Navigation]}
       >
 
        {heroImages.map((item)=>(

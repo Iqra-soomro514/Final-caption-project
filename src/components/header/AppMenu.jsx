@@ -1,262 +1,266 @@
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Drawer from "@mui/material/Drawer";
+import Divider from "@mui/material/Divider";
+import { Button, Typography } from "@mui/material";
+import logo from "./../../assets/logo.svg";
+import RoomIcon from "@mui/icons-material/Room";
+import GradingIcon from "@mui/icons-material/Grading";
+import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import SmartphoneIcon from "@mui/icons-material/Smartphone";
+import WatchIcon from "@mui/icons-material/Watch";
+import CastForEducationIcon from "@mui/icons-material/CastForEducation";
+import CatchingPokemonIcon from "@mui/icons-material/CatchingPokemon";
+import AirlineSeatLegroomExtraIcon from "@mui/icons-material/AirlineSeatLegroomExtra";
+import AodIcon from "@mui/icons-material/Aod";
+import BluetoothAudioIcon from "@mui/icons-material/BluetoothAudio";
+import EvStationIcon from "@mui/icons-material/EvStation";
+import TabletAndroidIcon from "@mui/icons-material/TabletAndroid";
+import LaptopMacIcon from "@mui/icons-material/LaptopMac";
+import KitchenIcon from "@mui/icons-material/Kitchen";
+import TwoWheelerIcon from "@mui/icons-material/TwoWheeler";
 
-import React, { useState } from "react";
-import {
-  Drawer,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemIcon,
-  Collapse,
-  IconButton,
-  Button,
-  Typography,
-  Divider,
-} from "@mui/material";
-import {
-  ExpandLess,
-  ExpandMore,
-  Close,
-  AccountCircle,
-  LocalShipping,
-  ErrorOutline,
-  Notifications,
-  Logout,
-  Smartphone,
-  Watch,
-  Headset,
-  Air,
-  Brush,
-  Power,
-  Speaker,
-} from "@mui/icons-material";
-
-import logo from '../../assets/logo.svg'
-
-const categories = [
+const accordionData = [
   {
-    name: "Mobiles",
-    icon: <Smartphone />,
-    subcategories: ["Apple", "Samsung", "Xiaomi", "Infinix", "Oppo", "Vivo", "Realme"],
+    image: <SmartphoneIcon />,
+    question: "Mobiles",
+    answer: [
+      "Apple",
+      "iPhone",
+      "MacBook",
+      "iPad",
+      "Nokia",
+      "Itel",
+      "Oppo",
+      "Realme",
+      "Samsung",
+      "Xiaxomi",
+    ],
   },
   {
-    name: "Smart Watches",
-    icon: <Watch />,
-    subcategories: ["Apple Watch", "Samsung Watch", "Xiaomi Mi Band"],
+    image: <WatchIcon />,
+    question: "Smart Watches",
+    answer: [
+      "Asstored",
+      "Deny",
+      "Faster",
+      "Samsung",
+      "Seveston",
+      "Yolo",
+      "Zero",
+    ],
   },
   {
-    name: "Wireless Earbuds",
-    icon: <Headset />,
-    subcategories: ["AirPods", "Galaxy Buds", "Redmi Buds"],
+    image: <CastForEducationIcon />,
+    question: "Wireless EarBuds",
+    answer: [
+      "Airox",
+      "Asstored",
+      "Anker",
+      "Audioninc",
+      "Lenovo",
+      "Ronin",
+      "SoundPeats",
+      "Xioxomi",
+      "Zero",
+    ],
   },
   {
-    name: "Air Purifiers",
-    icon: <Air />,
-    subcategories: ["Philips", "Mi Air Purifier", "Dyson"],
+    image: <CatchingPokemonIcon />,
+    question: "Air Purifiers",
+    answer: ["Burrior", "Xiaxomi", "Trimmer Shaver"],
   },
   {
-    name: "Personal Cares",
-    icon: <Brush />,
-    subcategories: ["Trimmers", "Hair Dryers", "Shavers"],
+    image: <AirlineSeatLegroomExtraIcon />,
+    question: "Personal Cares",
+    answer: [
+      "Charging Cables",
+      "Wireless Chargers",
+      "Wall Chargers",
+      "Car Chargers",
+    ],
   },
   {
-    name: "Mobiles Accessories",
-    icon: <Power />,
-    subcategories: ["Chargers", "Cables", "Phone Covers"],
+    image: <AodIcon />,
+    question: "Mobiles Accessories",
+    answer: ["Audionic", "Faster", "Xiaxomi", "Sound Crash"],
   },
   {
-    name: "Bluetooth Speakers",
-    icon: <Speaker />,
-    subcategories: ["JBL", "Sony", "Bose"],
+    image: <BluetoothAudioIcon />,
+    question: "Bluetooth Speaker",
+    answer: ["Bases", "Faster", "Joyroom", "Xiaxomi"],
+  },
+  {
+    image: <EvStationIcon />,
+    question: "Power Banks",
+    answer: ["Apple", "G-tide", "Samsung", "Xiaxomi"],
+  },
+  {
+    image: <TabletAndroidIcon />,
+    question: "Tablets",
+    answer: ["Apple", "G-tide", "Samsung", "Xiaxomi"],
+  },
+  {
+    image: <LaptopMacIcon />,
+    question: "Laptop",
+    answer: ["Apple", "Dell", "Hp", "Infinix"],
+  },
+  {
+    image: <KitchenIcon />,
+    question: "Tv & Home Appliances",
+    answer: ["LED Tv", "Ac", "Fridge"],
+  },
+  {
+    image: <TwoWheelerIcon />,
+    question: "Motorcycles",
+    answer: ["Honda", "Union star", "Unique", "Yamaha"],
   },
 ];
 
-const popularLists = [
-  "Best Mobiles Under 10000",
-  "Best Mobiles Under 15000",
-  "Best Mobiles Under 20000",
-  "Best Mobiles Under 30000",
-  "Best Mobiles Under 40000",
-  "Best Mobiles Under 50000",
-  "Best Mobiles Under 60000",
-  "Best Mobiles Under 80000",
-  "Best Mobiles Under 100000",
-  "Best 5G Phones",
-  "Best Camera Phones",
-  "Best Selfie Camera Phones",
-  "Best PUBG Mobiles",
-  "Most Expensive Phones",
-  "Top 10 Fast Charging Mobiles",
-];
+export default function OpenDrawer(props) {
+  const { open, toggleDrawer } = props;
+  const [expanded, setExpanded] = React.useState(false);
 
-const additionalLinks = [
-  "About",
-  "FAQs",
-  "Careers",
-  "Contact",
-  "Privacy Policy",
-  "Press & Blog",
-  "Installments Plan",
-  "Terms & Condition",
-  "Warranty Center",
-];
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
 
-const AppMenu = ({ open, onClose }) => {
-  const [expandedCategory, setExpandedCategory] = useState(null);
-
-  const handleCategoryClick = (categoryName) => {
-    setExpandedCategory(expandedCategory === categoryName ? null : categoryName);
+  const stopPropagation = (event) => {
+    event.stopPropagation(); 
   };
 
   return (
-    <Drawer
-      anchor="left"
-      open={open}
-      onClose={onClose}
-      PaperProps={{
-        sx: { width: 350, backgroundColor: "#f7f7f7", padding: "16px 0" },
-      }}
-    >
-      {/* Header Section with Logo */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "16px",
-          backgroundColor: "#4dacf5",
-        }}
-      >
-        <img
-          src={logo}
-          alt="Logo"
-          style={{ height: "40px", marginLeft: "16px" }}
-        />
-        <IconButton
-          onClick={onClose}
-          style={{ color: "black", borderRadius: "50%" }}
-        >
-          <Close />
-        </IconButton>
-      </div>
+    <div>
+      <Drawer open={open} onClose={toggleDrawer(false)}>
+        <Box sx={{ width: 400, padding: "0 20px" }} role="presentation">
+          <Box className="bg-color text-white">
+            <Box className="container mx-auto p-5">
+              <img className="w-1/2 mx-3" src={logo} alt="Logo" />
+              <Box className="flex my-3">
+                <AccountCircleIcon className="mx-3" />
+                <Typography variant="body1">My Account</Typography>
+              </Box>
+              <Box className="flex my-3 ">
+                <RoomIcon className="mx-3" />
+                <Typography variant="body1"> Track my Order</Typography>
+              </Box>
+              <Box className="flex my-3 ">
+                <GradingIcon className="mx-3" />
+                <Typography variant="body1">Launch a Complaint</Typography>
+              </Box>
+              <Box className="flex my-3 ">
+                <NotificationsNoneIcon className="mx-3" />
+                <Typography variant="body1">Notifications</Typography>
+              </Box>
+              <Box className="flex my-3 ">
+                <ExitToAppIcon className="mx-3" />
+                <Typography variant="body1">Logout</Typography>
+              </Box>
+            </Box>
+          </Box>
+          <Box className="ps-5 pt-3">
+            <Typography variant="h6" className="text-gray-500">
+              Categories
+            </Typography>
+          </Box>
 
-      {/* User Account Links with Unified Background */}
-      <List
-        style={{
-          backgroundColor: "#4dacf5",
-          color: "#fff",
-          padding: "0 16px",
-        }}
-      >
-        <ListItem>
-          <ListItemIcon style={{ color: "#fff" }}>
-            <AccountCircle />
-          </ListItemIcon>
-          <ListItemText primary="My Account" />
-        </ListItem>
-        <ListItem>
-          <ListItemIcon style={{ color: "#fff" }}>
-            <LocalShipping />
-          </ListItemIcon>
-          <ListItemText primary="Track my Order" />
-        </ListItem>
-        <ListItem>
-          <ListItemIcon style={{ color: "#fff" }}>
-            <ErrorOutline />
-          </ListItemIcon>
-          <ListItemText primary="Launch a Complaint" />
-        </ListItem>
-        <ListItem>
-          <ListItemIcon style={{ color: "#fff" }}>
-            <Notifications />
-          </ListItemIcon>
-          <ListItemText primary="Notifications" />
-        </ListItem>
-        <ListItem>
-          <ListItemIcon style={{ color: "#fff" }}>
-            <Logout />
-          </ListItemIcon>
-          <ListItemText primary="Logout" />
-        </ListItem>
-      </List>
+          {/* Accordion Section */}
+          <Box className="container my-5" onClick={stopPropagation}>
+            {accordionData.map((item, index) => (
+              <Accordion
+                key={index}
+                expanded={expanded === `panel${index + 1}`}
+                onChange={handleChange(`panel${index + 1}`)}
+              >
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls={`panel${index + 1}bh-content`}
+                  id={`panel${index + 1}bh-header`}
+                >
+                  <Box sx={{ display: "flex", alignItems: "center" }}>
+                    {item?.image && <Box sx={{ mr: 2 }}>{item.image}</Box>}
+                    <Typography sx={{ color: "text.secondary" }}>
+                      {item?.question}
+                    </Typography>
+                  </Box>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography>
+                    <ul>
+                      {item.answer.map((answerItem, idx) => (
+                        <li
+                          key={idx}
+                          className="p-2  bg-white rounded-lg hover:bg-gray-200 transition duration-200"
+                        >
+                          {answerItem}
+                        </li>
+                      ))}
+                    </ul>
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+            ))}
+          </Box>
 
-      {/* Categories Section */}
-      <Typography
-        variant="subtitle1"
-        style={{
-          fontWeight: "bold",
-          padding: "8px 16px",
-          backgroundColor: "#f0f5ff",
-        }}
-      >
-        CATEGORIES
-      </Typography>
-      <List>
-        {categories.map((category) => (
-          <div key={category.name}>
-            <ListItem button onClick={() => handleCategoryClick(category.name)}>
-              <ListItemIcon>{category.icon}</ListItemIcon>
-              <ListItemText primary={category.name} />
-              {expandedCategory === category.name ? <ExpandLess /> : <ExpandMore />}
-            </ListItem>
-            <Collapse in={expandedCategory === category.name} timeout="auto" unmountOnExit>
-              <List component="div" disablePadding>
-                {category.subcategories.map((subcategory) => (
-                  <ListItem key={subcategory} sx={{ pl: 4 }}>
-                    <ListItemText primary={subcategory} />
-                  </ListItem>
-                ))}
-              </List>
-            </Collapse>
-          </div>
-        ))}
-      </List>
+          <Box className="container mx-auto">
+            <Typography variant="h6" className="text-gray-500 mb-4">
+              Popular Lists
+            </Typography>
+            {[ 
+              "Best Mobiles Under 10000", 
+              "Best Mobiles Under 15000", 
+              "Best Mobiles Under 20000", 
+              "Best Mobiles Under 30000", 
+              "Best Mobiles Under 40000", 
+              "Best Mobiles Under 50000", 
+              "Best Mobiles Under 60000", 
+              "Best Mobiles Under 80000", 
+              "Best Mobiles Under 100000", 
+              "Best 5G Phones", 
+              "Best Camera Phones", 
+              "Best Selfie Camera Phones", 
+              "Best PUBG Mobiles", 
+              "Most Expensive Phones", 
+              "Top 10 Fast Charging Mobiles", 
+              "Best Mobiles of 2023"
+            ].map((text, index) => (
+              <Box key={index} className="my-2">
+                <button
+                  className="text-gray-500 border border-gray-500 bg-white py-2 px-7 rounded cursor-pointer 
+                   hover:bg-blue-400 hover:text-white transition duration-200"
+                >
+                  {text}
+                </button>
+              </Box>
+            ))}
+          </Box>
 
-      <Divider />
+          <Box className="container mx-auto mt-10">
+            <Typography variant="h6" className="text-gray-500">
+              MAIN NAVIGATION
+            </Typography>
+            <ul className="text-gray-500">
+              <li>About</li>
+              <li>FAQs</li>
+              <li>Careers</li>
+              <li>Contact</li>
+              <li>Privacy Policy</li>
+              <li>Press & Blog</li>
+              <li>Installments Plan</li>
+              <li>Terms & Condition</li>
+              <li>Warranty Center</li>
+            </ul>
+          </Box>
 
-      {/* Popular Lists Section */}
-      <Typography
-        variant="subtitle1"
-        style={{
-          fontWeight: "bold",
-          padding: "8px 16px",
-          backgroundColor: "#f0f5ff",
-        }}
-      >
-        POPULAR LISTS
-      </Typography>
-      <div style={{ padding: "8px 16px" }}>
-        {popularLists.map((item) => (
-          <Button
-            key={item}
-            variant="outlined"
-            fullWidth
-            style={{ marginBottom: "8px", textTransform: "none" }}
-          >
-            {item}
-          </Button>
-        ))}
-      </div>
-
-      {/* Additional Links */}
-      <Typography
-        variant="subtitle1"
-        style={{
-          fontWeight: "bold",
-          padding: "8px 16px",
-          marginTop: "16px",
-        }}
-      >
-        MAIN NAVIGATION
-      </Typography>
-      <List>
-        {additionalLinks.map((link) => (
-          <ListItem key={link}>
-            <ListItemText primary={link} />
-          </ListItem>
-        ))}
-      </List>
-    </Drawer>
+          <Divider />
+        </Box>
+      </Drawer>
+    </div>
   );
-};
-
-export default AppMenu
+}
