@@ -11,8 +11,6 @@ import Img6 from "../../../assets/hero-6.jpg"
 import Img7 from "../../../assets/hero-7.jpg"
 import Img8 from "../../../assets/hero-8.jpg"
 import Banner from "../../../assets/sale-campaign-banner.gif"
-
-
 import { Navigation}  from 'swiper/modules';
 import { Box } from '@mui/material';
 
@@ -52,7 +50,6 @@ const HeroSection = () => {
             image: Img8
         },
     ]
-
   return (
     <>
         <Swiper
@@ -74,9 +71,7 @@ const HeroSection = () => {
        <Box className="py-5 lg:py-7 md:px-12 bg-slate-100">
         <img src={Banner} alt="" />
        </Box>
-
     </>
   )
 }
-
 export default HeroSection

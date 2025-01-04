@@ -22,7 +22,8 @@ const SmartsWatches = () => {
     <>
       <Box
         sx={{
-          backgroundImage: `url('https://static.priceoye.pk/images/categories/section-watches-bg-md.png')`,
+          backgroundImage: `url(
+https://static.priceoye.pk/images/categories/section-smart-watches-bg.png)`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",

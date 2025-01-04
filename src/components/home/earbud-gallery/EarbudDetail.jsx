@@ -51,5 +51,4 @@ const EarbudDetail = () => {
     </Box>
   );
 };
-
 export default EarbudDetail;

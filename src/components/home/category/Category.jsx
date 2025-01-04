@@ -1,6 +1,5 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-// import "swiper/css";
 import "swiper/css/navigation";
 import { Box, Typography } from "@mui/material";
 
@@ -52,7 +51,6 @@ const Category = () => {
       title: "Laptops",
     },
   ];
-
 return (
   <Box className="pb-4 bg-slate-100">
     <Box className="py-2 bg-white mx-auto" sx={{ maxWidth: "1200px" }}>
@@ -83,7 +81,5 @@ return (
     </Box>
   </Box>
 );
-
 };
-
 export default Category;

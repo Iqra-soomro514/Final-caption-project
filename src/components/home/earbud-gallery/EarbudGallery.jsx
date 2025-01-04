@@ -11,14 +11,12 @@ import { Navigation } from "swiper/modules";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import earbudData from "../../../data/earbudData";
-
 const EarbudGallery = () => {
   const navigate = useNavigate();
 
   const handleProductClick = (id) => {
-    navigate(`/earbud/${id}`); // Update the route to match the new route in index.js
+    navigate(`/earbud/${id}`);
   };
-
   return (
     <>
       <Box
@@ -87,5 +85,4 @@ const EarbudGallery = () => {
     </>
   );
 };
-
 export default EarbudGallery;
